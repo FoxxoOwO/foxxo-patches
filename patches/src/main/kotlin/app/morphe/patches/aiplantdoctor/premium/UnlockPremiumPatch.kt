@@ -52,10 +52,22 @@
 package app.morphe.patches.aiplantdoctor.premium
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.AppTarget
+import app.morphe.patcher.patch.Compatibility
 import app.morphe.patcher.patch.bytecodePatch
 
 private const val APP_PACKAGE = "me.jodoin.aiplantdoctor"
 private const val SKU_ANNUAL  = "$APP_PACKAGE.premium_annual"
+
+private val COMPATIBILITY_AIPLANT = Compatibility(
+    name = "AI Plant Doctor",
+    packageName = APP_PACKAGE,
+    targets = listOf(
+        AppTarget(
+            version = "3.1.0"
+        )
+    )
+)
 
 val unlockPremiumPatch = bytecodePatch(
     name        = "Unlock premium",
@@ -64,9 +76,7 @@ val unlockPremiumPatch = bytecodePatch(
                   "Flutter in_app_purchase_android Pigeon channel so the app always considers " +
                   "the user a premium subscriber.",
 ) {
-    compatibleWith(APP_PACKAGE) {
-        versions("3.1.0")
-    }
+    compatibleWith(COMPATIBILITY_AIPLANT)
 
     execute {
         /*
