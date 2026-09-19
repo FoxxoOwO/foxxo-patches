@@ -1,5 +1,33 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "0.0.0",
-  "patches": []
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing. Injects a fake active annual subscription (me.jodoin.aiplantdoctor.premium_annual) into the Flutter in_app_purchase_android Pigeon channel so the app always considers the user a premium subscriber.",
+      "default": true,
+      "category": null,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.jodoin.aiplantdoctor",
+          "name": "AI Plant Doctor",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }
