@@ -1,3 +1,9 @@
+## [1.0.1-dev.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* inject fake purchase via BillingClient parser to prevent VerifyError ([43613a1](https://github.com/FoxxoOwO/foxxo-patches/commit/43613a17ec421633b15a81fc63c9d350fe42c331))
+
 ## 1.0.0 (2026-09-19)
 
 ### 🐛 Bug Fixes
