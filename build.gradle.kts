@@ -1,3 +1,1 @@
-plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
-}
+// Root build configuration for morphe-patches-template
