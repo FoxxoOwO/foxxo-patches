@@ -4,7 +4,7 @@
   "patches": [
     {
       "name": "Unlock premium",
-      "description": "Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing. Injects a fake active annual subscription (me.jodoin.aiplantdoctor.premium_annual) into the Flutter in_app_purchase_android Pigeon channel so the app always considers the user a premium subscriber.",
+      "description": "Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription.",
       "default": true,
       "category": null,
       "dependencies": [],

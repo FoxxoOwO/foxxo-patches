@@ -27,7 +27,7 @@ Or add manually in Morphe Manager:
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock premium](#unlock-premium) | Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing. Injects a fake active annual subscription (me.jodoin.aiplantdoctor.premium_annual) into the Flutter in_app_purchase_android Pigeon channel so the app always considers the user a premium subscriber. |  |
+| [Unlock premium](#unlock-premium) | Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription. |  |
 
 </details>
 
