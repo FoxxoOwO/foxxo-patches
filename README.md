@@ -15,7 +15,7 @@ Or add manually in Morphe Manager:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.1](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.4.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+> **[v1.4.1](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.4.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
 <details open>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
@@ -33,41 +33,9 @@ Or add manually in Morphe Manager:
 
 </details>
 
-<details open>
-<summary>📦 AI Plant Doctor&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 3.3.0 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Unlock premium](#unlock-premium) | Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription. Also clears the PairIP licence gate, which would otherwise kill the re-signed build before it starts. |  |
-
-</details>
-
 <!-- PATCHES_END -->
 
 ---
-
-## 🌿 AI Plant Doctor (`me.jodoin.aiplantdoctor`)
-
-### What the patch does
-Unlocks all premium features of the **AI Plant Doctor** app (`me.jodoin.aiplantdoctor v3.3.0_antisplit`) by intercepting Google Play Billing communication. The app always detects an active annual subscription (`me.jodoin.aiplantdoctor.premium_annual`).
-
-### Unlocked features
-- Unlimited plant diagnosis (AI Plant Doctor)
-- Full access to the Budsy assistant
-- Unlimited pest and disease detection
-- Personalized care plans
-- Advanced plant health analysis
-- AI diagnostics and Day Pass features
-
-### How it works
-The app is built with Flutter. The subscription check logic resides in Dart code (`libapp.so`), which obtains the purchase state across the Pigeon IPC bridge from the Java `in_app_purchase_android` plugin.
-The patch intercepts the `queryPurchasesAsync` call at the Java layer and injects a mocked response containing an active `me.jodoin.aiplantdoctor.premium_annual` purchase, completely bypassing Google Play BillingClient.
 
 ## 📸 Instagram Direct / Chat-Only (`com.instagram.android`)
 
