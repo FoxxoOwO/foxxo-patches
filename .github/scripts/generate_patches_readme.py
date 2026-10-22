@@ -47,6 +47,21 @@ def pkg_emoji(pkg):
     """Return a standard package emoji regardless of the package name."""
     return "📦"
 
+
+def merge_targets(existing, incoming):
+    """Union the version targets declared by every patch of the same package.
+
+    Patches for one app can declare different compatibility (version-agnostic meta
+    patches next to version-pinned ones), so the per-package versions table must
+    not depend on which patch happens to come first in the file.
+    """
+    merged = {}
+    for t in list(existing) + list(incoming):
+        merged.setdefault(t.get("version"), t)
+    # Concrete versions first, the catch-all (version = null) last.
+    return sorted(merged.values(), key=lambda t: (t.get("version") is None, t.get("version") or ""))
+
+
 # Group patches by package; patches with no compatiblePackages are universal.
 # JSON structure: compatiblePackages is a list of objects with
 # { packageName, name, targets: [{ version, isExperimental, description }] }
@@ -68,8 +83,12 @@ for patch in data["patches"]:
                 "name":    name,
                 "emoji":   pkg_emoji(pkg),
                 "patches": {},
-                "targets": pkg_entry.get("targets", []),
+                "targets": list(pkg_entry.get("targets", [])),
             }
+        else:
+            by_pkg[pkg]["targets"] = merge_targets(
+                by_pkg[pkg]["targets"], pkg_entry.get("targets", [])
+            )
         # Deduplicate patches that appear across multiple packages
         if patch["name"] not in by_pkg[pkg]["patches"]:
             by_pkg[pkg]["patches"][patch["name"]] = patch

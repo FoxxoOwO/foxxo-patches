@@ -20,6 +20,11 @@ Or add manually in Morphe Manager:
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
 <br>
 
+**🎯 Supported versions:**
+
+| 447.0.0.55.81 |
+| :---: |
+
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Clone](#clone) | Renames the package and app label so the patched build installs alongside a stock Instagram instead of replacing it. | • Package name<br>• App name |

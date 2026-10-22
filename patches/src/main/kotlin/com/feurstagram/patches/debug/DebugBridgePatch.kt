@@ -8,7 +8,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.feurstagram.patches.settings.TabBarBinderFingerprint
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
+import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM_ANY
 import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val DEBUG_CLASS = "Lcom/feurstagram/extension/DebugBridge;"
@@ -32,7 +32,7 @@ val debugBridgePatch = bytecodePatch(
         "they can be driven from a shell instead of the on-screen panel.",
     default = false,
 ) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
+    compatibleWith(COMPATIBILITY_INSTAGRAM_ANY)
 
     extendWith(EXTENSION)
 

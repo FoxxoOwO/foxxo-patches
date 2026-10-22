@@ -93,6 +93,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": false,
@@ -119,6 +126,13 @@
           "appIconColor": "#FC483C",
           "signatures": null,
           "targets": [
+            {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": null,
               "versionCodes": null,
@@ -147,6 +161,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": false,
@@ -173,6 +194,13 @@
           "appIconColor": "#FC483C",
           "signatures": null,
           "targets": [
+            {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": null,
               "versionCodes": null,
@@ -201,6 +229,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": false,
@@ -227,6 +262,13 @@
           "appIconColor": "#FC483C",
           "signatures": null,
           "targets": [
+            {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": null,
               "versionCodes": null,
@@ -255,6 +297,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": false,
@@ -282,6 +331,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": false,
@@ -308,6 +364,13 @@
           "appIconColor": "#FC483C",
           "signatures": null,
           "targets": [
+            {
+              "version": "447.0.0.55.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": null,
               "versionCodes": null,

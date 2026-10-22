@@ -15,7 +15,7 @@ import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
+import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM_ANY
 import org.w3c.dom.Element
 
 private const val ORIGINAL_PACKAGE_NAME = "com.instagram.android"
@@ -27,7 +27,7 @@ val clonePatch = resourcePatch(
         "alongside a stock Instagram instead of replacing it.",
     default = false,
 ) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
+    compatibleWith(COMPATIBILITY_INSTAGRAM_ANY)
 
     val packageName by stringOption(
         key = "packageName",
