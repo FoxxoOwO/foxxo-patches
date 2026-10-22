@@ -44,7 +44,7 @@ Or add manually in Morphe Manager:
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock premium](#unlock-premium) | Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription. |  |
+| [Unlock premium](#unlock-premium) | Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription. Also clears the PairIP licence gate, which would otherwise kill the re-signed build before it starts. |  |
 
 </details>
 

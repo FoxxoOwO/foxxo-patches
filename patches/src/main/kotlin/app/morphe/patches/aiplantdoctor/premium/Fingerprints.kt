@@ -26,3 +26,17 @@ internal object BillingResultConverterFingerprint : Fingerprint(
     parameters = listOf("Ln2/d;"),
     returnType = "LH8/q;",
 )
+
+/**
+ * PairIP's licence gate, `com.pairip.application.Application.attachBaseContext` calls it before
+ * Flutter starts: `Lcom/pairip/licensecheck/LicenseClient;->checkLicense(Landroid/content/Context;)V`.
+ *
+ * Play's licence check can never pass for a re-signed APK, and PairIP's failure path starts
+ * LicenseActivity and kills the process, so the patched build never reaches its own code.
+ */
+internal object PairIpLicenseCheckFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "checkLicense",
+    parameters = listOf("Landroid/content/Context;"),
+    returnType = "V",
+)

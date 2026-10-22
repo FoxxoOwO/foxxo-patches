@@ -1,8 +1,10 @@
 package app.morphe.patches.aiplantdoctor.premium
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.patch.AppTarget
 import app.morphe.patcher.patch.Compatibility
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 
 private const val APP_PACKAGE = "me.jodoin.aiplantdoctor"
@@ -42,11 +44,24 @@ private val COMPATIBILITY_AIPLANT = Compatibility(
 
 val unlockPremiumPatch = bytecodePatch(
     name        = "Unlock premium",
-    description = "Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and returning an active annual subscription.",
+    description = "Unlocks all AI Plant Doctor premium features by bypassing Google Play Billing and " +
+        "returning an active annual subscription. Also clears the PairIP licence gate, which would " +
+        "otherwise kill the re-signed build before it starts.",
 ) {
     compatibleWith(COMPATIBILITY_AIPLANT)
 
     execute {
+        // 0. The release APK is wrapped in PairIP. Its Application runs checkLicense() in
+        //    attachBaseContext, the re-signed build fails Play's licence check, and PairIP then
+        //    starts LicenseActivity and kills the process before Flutter is up. Blank the check
+        //    out: the licence gate is the only thing it drives.
+        PairIpLicenseCheckFingerprint.method.apply {
+            val instructionCount = implementation?.instructions?.size
+                ?: throw PatchException("PairIP checkLicense has no implementation")
+            removeInstructions(instructionCount)
+            addInstructions(0, "return-void")
+        }
+
         // 1. Report BillingResponse.OK (responseCode = 0, empty debug message) whatever
         //    Play Billing answered, so the purchase list is never discarded.
         BillingResultConverterFingerprint.method.addInstructions(
