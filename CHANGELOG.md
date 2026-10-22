@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.0...v1.4.1) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* **aiplantdoctor:** clear PairIP licence check so the patched build starts ([759ade6](https://github.com/FoxxoOwO/foxxo-patches/commit/759ade6443b2add8be78e02c523a4e0ec49925eb))
+
 ## [1.4.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.3.0...v1.4.0) (2026-10-22)
 
 ### ✨ New Features
