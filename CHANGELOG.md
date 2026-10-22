@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.2.0...v1.3.0) (2026-10-22)
+
+### ✨ New Features
+
+* **aiplantdoctor:** retarget premium unlock to 3.3.0 ([6c2f737](https://github.com/FoxxoOwO/foxxo-patches/commit/6c2f737f83192c862c3ee34cc188cdfedb1ab087))
+* **instagram:** pin the tested 447.0.0.55.81 build ([7dd72ed](https://github.com/FoxxoOwO/foxxo-patches/commit/7dd72edd6add278e405a2d8e86b1ae0ab4c7a9ee))
+
 ## [1.2.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.1.0...v1.2.0) (2026-09-26)
 
 ### ✨ New Features
