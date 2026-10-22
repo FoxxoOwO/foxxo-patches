@@ -1,3 +1,9 @@
+## [1.4.2](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.1...v1.4.2) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* **aiplantdoctor:** drop the AI Plant Doctor patch ([cee17c1](https://github.com/FoxxoOwO/foxxo-patches/commit/cee17c126edf1f04b6fd440bf7787e037020f2c3))
+
 ## [1.4.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.0...v1.4.1) (2026-10-22)
 
 ### 🐛 Bug Fixes
