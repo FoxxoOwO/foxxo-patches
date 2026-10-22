@@ -3,32 +3,26 @@ package app.morphe.patches.aiplantdoctor.premium
 import app.morphe.patcher.Fingerprint
 
 /**
- * Fingerprints the method that converts List<Purchase> to List<PurchaseWrapper>.
- * In me.jodoin.aiplantdoctor, this is Landroid/support/v4/media/session/b;->n(List)List.
+ * The in_app_purchase_android plugin's `queryPurchasesAsync` success callback,
+ * `LA/i;->j(Ln2/d;Ljava/util/List;)V` in the 3.3.0 build.
  *
- * Identified by strings:
- *   "orderId", "purchaseToken", "purchaseTime", "acknowledged"
+ * It wraps the billing result and the returned `List<Purchase>` into a
+ * `PlatformPurchasesResponse` (`LH8/F`) and posts that to the Pigeon reply, so it is
+ * the single funnel for both the INAPP and the SUBS query. The signature is unique
+ * across the app's dex files.
  */
-internal object ConvertPurchasesListFingerprint : Fingerprint(
-    returnType = "Ljava/util/List;",
-    strings = listOf(
-        "orderId",
-        "purchaseToken",
-        "purchaseTime",
-        "acknowledged",
-    ),
+internal object QueryPurchasesCallbackFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ln2/d;", "Ljava/util/List;"),
 )
 
 /**
- * Fingerprints the method that converts BillingResult to BillingResultWrapper.
- * In me.jodoin.aiplantdoctor, this is Landroid/support/v4/media/session/b;->m(BillingResult)r8/p.
- *
- * Identified by strings:
- *   "billingResult", "getDebugMessage(...)"
+ * Converts a `BillingResult` (`Ln2/d`) into the Pigeon `PlatformBillingResult`
+ * (`LH8/q`): `LG2/h;->k(Ln2/d;)LH8/q;`, mapping the response code onto the `LH8/p`
+ * enum. Rewriting the input's response code before it runs is how the callback is
+ * made to report `BillingResponse.ok`.
  */
-internal object ConvertBillingResultFingerprint : Fingerprint(
-    strings = listOf(
-        "billingResult",
-        "getDebugMessage(...)",
-    ),
+internal object BillingResultConverterFingerprint : Fingerprint(
+    parameters = listOf("Ln2/d;"),
+    returnType = "LH8/q;",
 )

@@ -42,7 +42,7 @@ Or add manually in Morphe Manager:
 
 **🎯 Supported versions:**
 
-| 3.1.0 |
+| 3.3.0 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -58,7 +58,7 @@ Or add manually in Morphe Manager:
 ## 🌿 AI Plant Doctor (`me.jodoin.aiplantdoctor`)
 
 ### What the patch does
-Unlocks all premium features of the **AI Plant Doctor** app (`me.jodoin.aiplantdoctor v3.1.0_antisplit`) by intercepting Google Play Billing communication. The app always detects an active annual subscription (`me.jodoin.aiplantdoctor.premium_annual`).
+Unlocks all premium features of the **AI Plant Doctor** app (`me.jodoin.aiplantdoctor v3.3.0_antisplit`) by intercepting Google Play Billing communication. The app always detects an active annual subscription (`me.jodoin.aiplantdoctor.premium_annual`).
 
 ### Unlocked features
 - Unlimited plant diagnosis (AI Plant Doctor)
