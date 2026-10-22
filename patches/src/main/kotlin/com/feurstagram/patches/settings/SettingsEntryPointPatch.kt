@@ -3,13 +3,11 @@ package com.feurstagram.patches.settings
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val SETTINGS_CLASS = "Lcom/feurstagram/extension/Settings;"
 
@@ -51,19 +49,12 @@ internal object TabBarBinderFingerprint : Fingerprint(
     },
 )
 
-@Suppress("unused")
-val settingsEntryPointPatch = bytecodePatch(
-    name = "Settings entry point",
-    description = "Opens the Feurstagram settings on a long-press of the Home tab, " +
-        "and installs the surface hiders and update check.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
-        TabBarBinderFingerprint.method.apply {
+/**
+ * Opens the Feurstagram settings on a long-press of the Home tab and installs the surface
+ * hiders and the update check.
+ */
+internal fun BytecodePatchContext.installSettingsEntryPoint() {
+    TabBarBinderFingerprint.method.apply {
             // The value stored into the ViewGroup field is the tab_bar root; it's
             // a stable handle into the window, from which the watcher attaches the
             // long-press settings listener to the Home tab and installs the hiders.
@@ -78,5 +69,4 @@ val settingsEntryPointPatch = bytecodePatch(
                     "$SETTINGS_CLASS->installHomeTabWatcher(Landroid/view/ViewGroup;)V",
             )
         }
-    }
 }

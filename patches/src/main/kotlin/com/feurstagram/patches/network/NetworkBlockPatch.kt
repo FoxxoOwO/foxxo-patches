@@ -3,13 +3,11 @@ package com.feurstagram.patches.network
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val BLOCK_CLASS = "Lcom/feurstagram/extension/Block;"
 
@@ -21,19 +19,12 @@ internal object TigonStartRequestFingerprint : Fingerprint(
     name = "startRequest",
 )
 
-@Suppress("unused")
-val networkBlockPatch = bytecodePatch(
-    name = "Network content blocking",
-    description = "Blocks the feed, stories, explore, reels, ads, suggestions and tracking " +
-        "at the network layer, gated on the runtime toggles.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
-        TigonStartRequestFingerprint.method.apply {
+/**
+ * Blocks the feed, stories, explore, reels, ads, suggestions and tracking at the network layer,
+ * gated on the runtime toggles.
+ */
+internal fun BytecodePatchContext.installNetworkBlocking() {
+    TigonStartRequestFingerprint.method.apply {
             // The request URI is loaded into a register via an `iget-object` of
             // type java.net.URI inside the request-sending try block. Inject our
             // check right after it so the thrown IOException is caught as a
@@ -50,5 +41,4 @@ val networkBlockPatch = bytecodePatch(
                     "$BLOCK_CLASS->throwIfBlocked(Ljava/net/URI;)V",
             )
         }
-    }
 }

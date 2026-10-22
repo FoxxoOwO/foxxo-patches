@@ -3,9 +3,7 @@ package com.feurstagram.patches.ui
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
+import app.morphe.patcher.patch.BytecodePatchContext
 
 private const val TOASTS_CLASS = "Lcom/feurstagram/extension/Toasts;"
 
@@ -24,19 +22,12 @@ internal object IgToastShowFingerprint : Fingerprint(
     custom = { _, classDef -> classDef.superclass == "Landroid/widget/Toast;" },
 )
 
-@Suppress("unused")
-val popupHidingPatch = bytecodePatch(
-    name = "Popup hiding",
-    description = "Drops Instagram's popups (\"Couldn't refresh feed\"), which a blocked surface " +
-        "raises on every failed request. Gated on the Instagram popups toggle.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
-        IgToastShowFingerprint.method.apply {
+/**
+ * Drops Instagram's popups ("Couldn't refresh feed"), which a blocked surface raises on every
+ * failed request. Gated on the Instagram popups toggle.
+ */
+internal fun BytecodePatchContext.installPopupHiding() {
+    IgToastShowFingerprint.method.apply {
             val registerCount = implementation?.registerCount
                 ?: throw PatchException("Instagram's toast show() has no implementation")
             // show() takes no arguments, so `this` is the single parameter register
@@ -57,5 +48,4 @@ val popupHidingPatch = bytecodePatch(
                 """,
             )
         }
-    }
 }

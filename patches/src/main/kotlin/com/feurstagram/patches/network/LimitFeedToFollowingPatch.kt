@@ -3,13 +3,11 @@ package com.feurstagram.patches.network
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val LIMIT_FEED_CLASS = "Lcom/feurstagram/extension/LimitFeed;"
 
@@ -34,18 +32,11 @@ internal object MainFeedHeaderMapFinderFingerprint : Fingerprint(
     strings = listOf("pagination_source", "FEED_REQUEST_SENT"),
 )
 
-@Suppress("unused")
-val limitFeedToFollowingPatch = bytecodePatch(
-    name = "Limit feed to following profiles",
-    description = "Optionally restricts the home feed to accounts you follow, by rewriting the " +
-        "feed request's pagination header. Gated on the runtime toggle.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
+/**
+ * Optionally restricts the home feed to accounts you follow by rewriting the feed request's
+ * pagination header. Gated on the runtime toggle.
+ */
+internal fun BytecodePatchContext.installLimitFeedToFollowing() {
         // The header field's name is obfuscated and the request class has several
         // Map fields, so resolve the right one dynamically: inside the header
         // builder, take the first reference to a Map field declared by the
@@ -74,5 +65,4 @@ val limitFeedToFollowingPatch = bytecodePatch(
                     "move-result-object v$headerRegister",
             )
         }
-    }
 }

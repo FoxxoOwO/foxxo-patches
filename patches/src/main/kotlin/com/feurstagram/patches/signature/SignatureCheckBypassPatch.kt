@@ -4,13 +4,12 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
 
 /**
  * Instagram wraps a signing certificate's SHA-256 in a "key hash" (Base64, 43 chars) via
@@ -44,17 +43,12 @@ private fun MutableMethod.replaceBodyToReturnTrue(reason: String) {
     addInstructions(0, "const/4 v0, 0x1\nreturn v0")
 }
 
-@Suppress("unused")
-val signatureCheckBypassPatch = bytecodePatch(
-    name = "Signature check bypass",
-    description = "Forces Instagram's signing-certificate trust checks to always pass, so a " +
-        "re-signed APK is treated as an official Meta build and deep links route to their " +
-        "content instead of falling back to the home feed.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    execute {
+/**
+ * Forces Instagram's signing-certificate trust checks to always pass, so a re-signed APK is
+ * treated as an official Meta build and deep links route to their content instead of falling
+ * back to the home feed.
+ */
+internal fun BytecodePatchContext.installSignatureCheckBypass() {
         val keyHashType = KeyHashClassFingerprint.classDef.type
 
         // Only one method with signature boolean(X.3uq): X.1eX.A01, the allowlist membership
@@ -89,7 +83,6 @@ val signatureCheckBypassPatch = bytecodePatch(
             },
         ).method
         scopeCheck.replaceBodyToReturnTrue("Signature scope check")
-    }
 }
 
 /** True if the method calls a getter declared on [ownerType] that returns the key-hash type. */

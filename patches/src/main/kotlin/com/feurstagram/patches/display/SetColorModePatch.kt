@@ -2,12 +2,10 @@ package com.feurstagram.patches.display
 
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val WINDOW = "Landroid/view/Window;"
 private const val DISPLAY_CLASS = "Lcom/feurstagram/extension/Display;"
@@ -32,19 +30,12 @@ private fun ReferenceInstruction.isWindowSetColorMode(): Boolean {
  * the patch needs no per-version maintenance. If a future Instagram build stops
  * calling it, the patch simply finds nothing and no-ops.
  */
-@Suppress("unused")
-val setColorModePatch = bytecodePatch(
-    name = "Force SDR display",
-    description = "Reroutes Instagram's window colour-mode changes so the app can be pinned to " +
-        "SDR, keeping the dark UI's blacks deep instead of the washed-out look HDR forces.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
-        classDefForEach classes@{ classDef ->
+/**
+ * Pins the window to SDR so the dark UI keeps its deep blacks instead of the washed-out look
+ * HDR forces. Rewrites every `Window.setColorMode(int)` call site.
+ */
+internal fun BytecodePatchContext.installSdrDisplay() {
+    classDefForEach classes@{ classDef ->
             // Never rewrite our own helper: it legitimately calls
             // Window.setColorMode, and rewriting that into Display.setColorMode
             // would make it call itself forever.
@@ -79,5 +70,4 @@ val setColorModePatch = bytecodePatch(
                 }
             }
         }
-    }
 }

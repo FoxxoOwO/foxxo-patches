@@ -3,11 +3,9 @@ package com.feurstagram.patches.network
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
-import com.feurstagram.patches.shared.Constants.EXTENSION
 
 private const val BLOCK_CLASS = "Lcom/feurstagram/extension/Block;"
 
@@ -38,20 +36,12 @@ internal object FeedItemParseFromJsonFingerprint : Fingerprint(
     custom = { method, _ -> method.name.lowercase().contains("parsefromjson") },
 )
 
-@Suppress("unused")
-val feedItemFilterPatch = bytecodePatch(
-    name = "Feed item filtering",
-    description = "Drops ad/promo and suggested feed units at the JSON-parse layer, catching the " +
-        "ones injected inline into the timeline that URL blocking misses. Gated on the Ads and " +
-        "Suggested toggles.",
-    default = true,
-) {
-    compatibleWith(COMPATIBILITY_INSTAGRAM)
-
-    extendWith(EXTENSION)
-
-    execute {
-        FeedItemParseFromJsonFingerprint.method.apply {
+/**
+ * Drops ad/promo and suggested feed units at the JSON-parse layer, catching the ones injected
+ * inline into the timeline that URL blocking misses. Gated on the Ads and Suggested toggles.
+ */
+internal fun BytecodePatchContext.installFeedItemFiltering() {
+    FeedItemParseFromJsonFingerprint.method.apply {
             // The parse loop reads each item's JSON field name into a register,
             // then dispatches on String.hashCode() through a sparse-switch whose
             // first case loads a type token via const-string/jumbo. The field
@@ -76,5 +66,4 @@ val feedItemFilterPatch = bytecodePatch(
                     "move-result-object v$keyRegister",
             )
         }
-    }
 }
