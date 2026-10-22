@@ -15,7 +15,7 @@ Or add manually in Morphe Manager:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.0](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+> **[v1.4.0](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
 <details open>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>

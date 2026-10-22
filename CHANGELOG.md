@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.3.0...v1.4.0) (2026-10-22)
+
+### ✨ New Features
+
+* **instagram:** merge the distraction-free patches into one "Chat only" patch ([f0db50b](https://github.com/FoxxoOwO/foxxo-patches/commit/f0db50b7817a3e676b2151f200174fe4158f197a))
+
 ## [1.3.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.2.0...v1.3.0) (2026-10-22)
 
 ### ✨ New Features
