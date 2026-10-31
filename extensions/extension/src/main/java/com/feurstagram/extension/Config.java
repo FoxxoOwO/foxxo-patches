@@ -135,7 +135,13 @@ public final class Config {
      * it from the view tree — issue #94.
      */
     public static boolean isFriendsLaneBlocked() { return getBlocked("block_friends_lane", true); }
-    public static boolean isStoriesBlocked()   { return getBlocked("block_stories", true); }
+    /**
+     * Whether the stories tray is blocked (hides the /feed/reels_tray request). Off by
+     * default: chat-only is about dropping the feed and the recommendation surfaces, and
+     * the tray still renders above the Direct inbox, so stories stay a passive way to keep
+     * up with people. Users who want it gone flip it in the settings.
+     */
+    public static boolean isStoriesBlocked()   { return getBlocked("block_stories", false); }
     public static boolean isInstantsBlocked()  { return getBlocked("block_instants", true); }
     public static boolean isNotesBlocked()     { return getBlocked("block_notes", true); }
     public static boolean isSuggestedBlocked() { return getBlocked("block_suggested", true); }
