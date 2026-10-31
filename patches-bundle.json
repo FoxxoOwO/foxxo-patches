@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-31T14:16:34",
-  "description": "## [1.4.3](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.2...v1.4.3) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **instagram:** restore settings shortcuts across inbox layouts ([0ee9473](https://github.com/FoxxoOwO/foxxo-patches/commit/0ee9473561212dc13ae074d0c99edccd26a38c84))",
-  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.4.3/patches-1.4.3.mpp",
+  "created_at": "2026-10-31T15:17:24",
+  "description": "## [1.5.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.3...v1.5.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** open the settings by holding any bottom tab ([d8395b7](https://github.com/FoxxoOwO/foxxo-patches/commit/d8395b7d87d196ceb72f592e6537c208f28df7e0))",
+  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.5.0/patches-1.5.0.mpp",
   "signature_download_url": "",
-  "version": "1.4.3"
+  "version": "1.5.0"
 }

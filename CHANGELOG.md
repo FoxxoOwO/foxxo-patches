@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.3...v1.5.0) (2026-10-31)
+
+### ✨ New Features
+
+* **instagram:** open the settings by holding any bottom tab ([d8395b7](https://github.com/FoxxoOwO/foxxo-patches/commit/d8395b7d87d196ceb72f592e6537c208f28df7e0))
+
 ## [1.4.3](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.2...v1.4.3) (2026-10-31)
 
 ### 🐛 Bug Fixes
