@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.5.0...v1.6.0) (2026-10-31)
+
+### ✨ New Features
+
+* **instagram:** keep the Stories tray visible in chat-only mode ([1e1dca6](https://github.com/FoxxoOwO/foxxo-patches/commit/1e1dca66d91516484cd20349b1ce9b7da69f5310)), closes [#int](https://github.com/FoxxoOwO/foxxo-patches/issues/int)
+
 ## [1.5.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.3...v1.5.0) (2026-10-31)
 
 ### ✨ New Features

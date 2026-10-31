@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-31T15:17:24",
-  "description": "## [1.5.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.3...v1.5.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** open the settings by holding any bottom tab ([d8395b7](https://github.com/FoxxoOwO/foxxo-patches/commit/d8395b7d87d196ceb72f592e6537c208f28df7e0))",
-  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.5.0/patches-1.5.0.mpp",
+  "created_at": "2026-10-31T15:25:50",
+  "description": "## [1.6.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.5.0...v1.6.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** keep the Stories tray visible in chat-only mode ([1e1dca6](https://github.com/FoxxoOwO/foxxo-patches/commit/1e1dca66d91516484cd20349b1ce9b7da69f5310)), closes [#int](https://github.com/FoxxoOwO/foxxo-patches/issues/int)",
+  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.6.0/patches-1.6.0.mpp",
   "signature_download_url": "",
-  "version": "1.5.0"
+  "version": "1.6.0"
 }
