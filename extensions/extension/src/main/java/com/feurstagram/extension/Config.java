@@ -54,6 +54,14 @@ public final class Config {
         return prefs == null ? defaultValue : prefs.getBoolean(key, defaultValue);
     }
 
+    /** Drop every stored toggle so the next launch is back to the chat-only defaults. */
+    public static void resetAll() {
+        SharedPreferences prefs = prefs();
+        if (prefs == null) return;
+        prefs.edit().clear().apply();
+        sNeedsRestart = false;
+    }
+
     public static void setBlocked(String key, boolean value) {
         // Hardcore lock only forbids *revealing* a surface. Hiding one is always
         // allowed so users can still tighten. A surface may be revealed only when
