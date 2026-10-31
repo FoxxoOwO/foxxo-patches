@@ -1,3 +1,9 @@
+## [1.8.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.0...v1.8.1) (2026-10-31)
+
+### 🐛 Bug Fixes
+
+* **instagram:** stop the Stories tab crashing the tab bar ([7ad5597](https://github.com/FoxxoOwO/foxxo-patches/commit/7ad5597eabf5be508048d48c3ad462882834a651))
+
 ## [1.8.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.7.0...v1.8.0) (2026-10-31)
 
 ### ✨ New Features
