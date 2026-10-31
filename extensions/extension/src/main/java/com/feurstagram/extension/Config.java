@@ -150,6 +150,12 @@ public final class Config {
      * up with people. Users who want it gone flip it in the settings.
      */
     public static boolean isStoriesBlocked()   { return getBlocked("block_stories", false); }
+
+    /**
+     * Whether the bottom bar's Home tab is repurposed as a stories-only tab (label
+     * "Stories", ring icon, feed still blocked). Off by default.
+     */
+    public static boolean isStoriesTabEnabled() { return getBlocked("nav_show_stories_tab", false); }
     public static boolean isInstantsBlocked()  { return getBlocked("block_instants", true); }
     public static boolean isNotesBlocked()     { return getBlocked("block_notes", true); }
     public static boolean isSuggestedBlocked() { return getBlocked("block_suggested", true); }
@@ -199,6 +205,9 @@ public final class Config {
 
     /** Whether the bottom-bar icon for a {@code nav_show_*} key is currently shown. */
     public static boolean isNavTabShown(String navKey) {
+        // The Home tab only exists as the stories tab, so it is shown exactly when
+        // that mode is on, and never as a plain feed tab.
+        if ("nav_show_home".equals(navKey)) return isStoriesTabEnabled();
         return getBlocked(navKey, navDefault(navKey));
     }
 

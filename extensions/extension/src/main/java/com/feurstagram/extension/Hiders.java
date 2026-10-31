@@ -60,7 +60,9 @@ public final class Hiders {
                 true, false, "action_bar_buttons_container_right", "notification"));
 
         // Bottom-navigation icons: by default in chat-only mode, only Direct and Profile are shown.
-        observer.addOnGlobalLayoutListener(new VisibilityHider(root, "nav_show_home", false, true, null, "feed_tab"));
+        // Home is no longer a plain show/hide toggle: StoriesTab shows it only when it
+        // is repurposed as a stories tab.
+        observer.addOnGlobalLayoutListener(new StoriesTab(root));
         observer.addOnGlobalLayoutListener(new VisibilityHider(root, "nav_show_search", false, true, null, "search_tab"));
         observer.addOnGlobalLayoutListener(new VisibilityHider(root, "nav_show_reels", false, true, null, "clips_tab"));
         observer.addOnGlobalLayoutListener(new VisibilityHider(root, "nav_show_create", false, true, null, "creation_tab"));
@@ -261,12 +263,12 @@ public final class Hiders {
             int clipsTabId = resolveId(context, "clips_tab");
             int createTabId = resolveId(context, "creation_tab");
 
-            hideView(searchRoot, feedTabId);
+            // feed_tab belongs to StoriesTab, which decides between hidden and a
+            // stories tab; the remaining tabs are always removed.
             hideView(searchRoot, searchTabId);
             hideView(searchRoot, clipsTabId);
             hideView(searchRoot, createTabId);
 
-            hideView(root, feedTabId);
             hideView(root, searchTabId);
             hideView(root, clipsTabId);
             hideView(root, createTabId);

@@ -46,6 +46,7 @@ Transforms Instagram into a distraction-free, dedicated messenger (Messenger for
 - **Clean bottom navigation:** Hides Home, Explore, Reels, and Creation tabs from the bottom bar, leaving only Direct and Profile.
 - **Messenger-like back navigation:** Pressing Back in the main Direct inbox moves the app to the background / home screen instead of returning to an empty feed.
 - **In-chat media playback:** Posts and Reels shared in direct messages remain fully viewable and playable (via signature check bypass).
+- **Stories tab:** an optional Stories tab takes Home's place (stories ring icon, no feed), so stories stay reachable without bringing the timeline back - switch on "Stories tab (replaces Home)" in the settings.
 - **Settings:** Long-press any bottom tab (Direct, Profile, ...) or the Direct inbox title bar to open Feurstagram settings - the gesture works with Home hidden, so the toggles (Stories, ads, popups, ...) are reachable without a debug build.
 
 ---

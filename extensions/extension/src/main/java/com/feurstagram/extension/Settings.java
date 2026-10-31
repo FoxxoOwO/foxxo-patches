@@ -450,6 +450,8 @@ public final class Settings {
         LinearLayout nav = addSection(context, column, "Bottom bar");
         addRow(context, nav, "Messages tab", "nav_show_direct", Config.getBlocked("nav_show_direct", true), onNavChanged);
         addRow(context, nav, "Profile tab", "nav_show_profile", Config.getBlocked("nav_show_profile", true), onNavChanged);
+        addRow(context, nav, "Stories tab (replaces Home)", "nav_show_stories_tab",
+                Config.isStoriesTabEnabled(), onNavChanged);
         sealGroup(context, nav);
 
         LinearLayout popups = addSection(context, column, "Popups");
@@ -829,6 +831,7 @@ public final class Settings {
         if (key.equals("hide_toasts")) return "Hide every Instagram popup, including “couldn’t refresh feed”.";
         if (key.equals("force_sdr")) return "Keep blacks deep by stopping Instagram forcing HDR on the UI.";
         if (key.equals("block_stories")) return "Drop the story tray above the Direct inbox.";
+        if (key.equals("nav_show_stories_tab")) return "Turn the Home tab into a Stories tab: ring icon, no feed.";
         if (key.equals("block_notes")) return "Hide the Notes tray at the top of the inbox.";
         if (key.equals("block_instants")) return "Hide the Instants entry points.";
         if (key.equals("block_suggested")) return "Hide suggested accounts and units.";
@@ -841,7 +844,7 @@ public final class Settings {
     // --- Landing page picker --------------------------------------------------
 
     private static final String[] LANDING_VALUES = {"home", "search", "direct", "profile"};
-    private static final String[] LANDING_LABELS = {"Home feed", "Search", "Direct messages", "Profile"};
+    private static final String[] LANDING_LABELS = {"Stories", "Search", "Direct messages", "Profile"};
 
     /**
      * @param landingSync out-parameter: receives a runnable that re-checks which
