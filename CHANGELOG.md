@@ -1,3 +1,9 @@
+## [1.4.3-dev.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.2...v1.4.3-dev.1) (2026-10-31)
+
+### 🐛 Bug Fixes
+
+* **instagram:** restore settings shortcuts across inbox layouts ([0ee9473](https://github.com/FoxxoOwO/foxxo-patches/commit/0ee9473561212dc13ae074d0c99edccd26a38c84))
+
 ## [1.4.2](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.4.1...v1.4.2) (2026-10-22)
 
 ### 🐛 Bug Fixes
