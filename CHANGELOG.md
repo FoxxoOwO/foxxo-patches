@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.6.0...v1.7.0) (2026-10-31)
+
+### ✨ New Features
+
+* **instagram:** trim the settings to what chat-only controls ([5560993](https://github.com/FoxxoOwO/foxxo-patches/commit/5560993c59e0de4703f99dfcb0b52acd110a9d2b))
+
 ## [1.6.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.5.0...v1.6.0) (2026-10-31)
 
 ### ✨ New Features

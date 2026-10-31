@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-31T15:25:50",
-  "description": "## [1.6.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.5.0...v1.6.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** keep the Stories tray visible in chat-only mode ([1e1dca6](https://github.com/FoxxoOwO/foxxo-patches/commit/1e1dca66d91516484cd20349b1ce9b7da69f5310)), closes [#int](https://github.com/FoxxoOwO/foxxo-patches/issues/int)",
-  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.6.0/patches-1.6.0.mpp",
+  "created_at": "2026-10-31T15:28:31",
+  "description": "## [1.7.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.6.0...v1.7.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** trim the settings to what chat-only controls ([5560993](https://github.com/FoxxoOwO/foxxo-patches/commit/5560993c59e0de4703f99dfcb0b52acd110a9d2b))",
+  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.7.0/patches-1.7.0.mpp",
   "signature_download_url": "",
-  "version": "1.6.0"
+  "version": "1.7.0"
 }
