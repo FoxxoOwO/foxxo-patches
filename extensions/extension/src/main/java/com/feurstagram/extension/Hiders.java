@@ -362,6 +362,11 @@ public final class Hiders {
      * - Intercepts system back key to minimize to home screen
      */
     static final class DirectInboxHandler implements ViewTreeObserver.OnGlobalLayoutListener {
+        private static final String[] SETTINGS_TARGET_IDS = {
+                "action_bar_title", "action_bar_large_title", "action_bar_large_title_auto_size",
+                "action_bar_new_title_container", "action_bar_title_and_icons",
+                "action_bar_little_icon_container", "action_bar_title_chevron",
+        };
         private final ViewGroup root;
 
         DirectInboxHandler(ViewGroup root) {
@@ -380,9 +385,17 @@ public final class Hiders {
             if (searchRoot == null) searchRoot = root;
 
             int barId = resolveId(context, "direct_inbox_action_bar");
-            if (barId == 0) return;
-            View bar = searchRoot.findViewById(barId);
-            if (bar == null || bar.getVisibility() != View.VISIBLE) return;
+            View bar = barId == 0 ? null : searchRoot.findViewById(barId);
+            if (bar == null || !bar.isShown()) {
+                // Some inbox layouts use the shared action bar. Only use it while
+                // the inbox list is visible, so other screens keep their own handlers.
+                int inboxId = resolveId(context, "inbox_refreshable_thread_list_recyclerview");
+                View inbox = inboxId == 0 ? null : searchRoot.findViewById(inboxId);
+                if (inbox == null || !inbox.isShown()) return;
+                barId = resolveId(context, "action_bar");
+                bar = barId == 0 ? null : searchRoot.findViewById(barId);
+            }
+            if (bar == null || !bar.isShown()) return;
 
             // Hide back button in Direct Inbox root so back does not fall through
             int backId = resolveId(context, "action_bar_button_back");
@@ -393,19 +406,22 @@ public final class Hiders {
                 }
             }
 
-            // Hook long-click on inbox title to open Settings
-            int titleId = resolveId(context, "action_bar_title");
-            if (titleId == 0) titleId = resolveId(context, "action_bar_large_title");
-            View titleView = titleId == 0 ? bar : bar.findViewById(titleId);
-            if (titleView != null) {
-                titleView.setOnLongClickListener(v -> {
-                    Context act = Settings.getActivityContext(v);
-                    if (act != null) {
-                        Settings.show(act);
-                        return true;
-                    }
-                    return false;
-                });
+            View.OnLongClickListener openSettings = v -> {
+                Context act = Settings.getActivityContext(v);
+                if (act == null) return false;
+                Settings.show(act);
+                return true;
+            };
+            // Keep the header available alongside every supported title variant.
+            // Clickable children consume their own gestures, so bind the observed
+            // title containers and chevron too, without changing their normal clicks.
+            bar.setOnLongClickListener(openSettings);
+            for (String targetName : SETTINGS_TARGET_IDS) {
+                int targetId = resolveId(context, targetName);
+                View target = targetId == 0 ? null : bar.findViewById(targetId);
+                if (target != null && target.isShown()) {
+                    target.setOnLongClickListener(openSettings);
+                }
             }
 
             // Intercept system Back key while in Direct Inbox: minimize app
