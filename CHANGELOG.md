@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.7.0...v1.8.0) (2026-10-31)
+
+### ✨ New Features
+
+* **instagram:** optional Stories tab in place of Home ([2f31c13](https://github.com/FoxxoOwO/foxxo-patches/commit/2f31c13f5e06d36660590d8630c2d03b305830b9))
+
 ## [1.7.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.6.0...v1.7.0) (2026-10-31)
 
 ### ✨ New Features

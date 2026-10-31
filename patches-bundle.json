@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-31T15:28:31",
-  "description": "## [1.7.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.6.0...v1.7.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** trim the settings to what chat-only controls ([5560993](https://github.com/FoxxoOwO/foxxo-patches/commit/5560993c59e0de4703f99dfcb0b52acd110a9d2b))",
-  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.7.0/patches-1.7.0.mpp",
+  "created_at": "2026-10-31T15:36:29",
+  "description": "## [1.8.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.7.0...v1.8.0) (2026-10-31)\n\n### ✨ New Features\n\n* **instagram:** optional Stories tab in place of Home ([2f31c13](https://github.com/FoxxoOwO/foxxo-patches/commit/2f31c13f5e06d36660590d8630c2d03b305830b9))",
+  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.8.0/patches-1.8.0.mpp",
   "signature_download_url": "",
-  "version": "1.7.0"
+  "version": "1.8.0"
 }
