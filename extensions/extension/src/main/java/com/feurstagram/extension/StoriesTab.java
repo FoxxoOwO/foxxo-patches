@@ -64,19 +64,30 @@ public final class StoriesTab implements ViewTreeObserver.OnGlobalLayoutListener
         boolean enabled = Config.isStoriesTabEnabled();
         tab.setVisibility(enabled ? View.VISIBLE : View.GONE);
         if (!enabled) return;
-        decorate(context, tab);
+        try {
+            decorate(context, tab);
+        } catch (Throwable t) {
+            // This runs inside Instagram's layout pass: a throw here kills the app, so
+            // an undecorated tab is always better than a crash.
+        }
     }
 
     private void decorate(Context context, View view) {
         if (view instanceof TextView) {
             TextView text = (TextView) view;
-            if (!LABEL.contentEquals(text.getText())) text.setText(LABEL);
+            CharSequence current = text.getText();
+            // getText()/getContentDescription() can both be null; contentEquals(null)
+            // throws, which took the whole tab bar down (NPE in dispatchOnGlobalLayout).
+            if (current == null || !LABEL.contentEquals(current)) text.setText(LABEL);
         } else if (view instanceof ImageView) {
             ImageView image = (ImageView) view;
             Drawable ring = icon(context);
             if (ring != null && image.getDrawable() != ring) image.setImageDrawable(ring);
-        } else if (!LABEL.contentEquals(view.getContentDescription())) {
-            view.setContentDescription(LABEL);
+        } else {
+            CharSequence description = view.getContentDescription();
+            if (description == null || !LABEL.contentEquals(description)) {
+                view.setContentDescription(LABEL);
+            }
         }
 
         if (view instanceof ViewGroup) {
