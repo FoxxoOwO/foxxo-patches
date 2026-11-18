@@ -15,7 +15,7 @@ Or add manually in Morphe Manager:
 ## Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.0](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.9.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+> **[v1.10.0](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.10.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
 <details open>
 <summary>Instagram&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
@@ -34,12 +34,27 @@ Or add manually in Morphe Manager:
 </details>
 
 <details open>
+<summary>Vampire Survivors&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**Supported versions:**
+
+| 1.16.111 |
+| :---: |
+
+| Patch | Description | Options |
+|----------|----------------|-----------|
+| [Unlock all DLC](#unlock-all-dlc) | Unlocks every expansion. The purchase lookup returns the game's own list of all DLC, so no store session or receipt is involved. Only the arm64 build is patched. |  |
+
+</details>
+
+<details open>
 <summary>Ascent&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **Supported versions:**
 
-| 5.0.1 |
+| 5.0.2 |
 | :---: |
 
 | Patch | Description | Options |

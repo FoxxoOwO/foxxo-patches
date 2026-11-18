@@ -1,3 +1,13 @@
+## [1.10.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.9.0...v1.10.0) (2026-11-18)
+
+### 🐛 Bug Fixes
+
+* **ascent:** update premium unlock to Ascent 5.0.2 ([46fb95a](https://github.com/FoxxoOwO/foxxo-patches/commit/46fb95a97d321867571578d7fed18a4da1cf7aef))
+
+### ✨ New Features
+
+* **vampiresurvivors:** unlock all DLC ([a9577ba](https://github.com/FoxxoOwO/foxxo-patches/commit/a9577baf05377f68ac9a5082015b9c66dcfb4aa8))
+
 ## [1.9.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.1...v1.9.0) (2026-11-18)
 
 ### ✨ New Features
