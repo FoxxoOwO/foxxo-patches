@@ -76,7 +76,20 @@ Makes Ascent treat the account as having an active Premium subscription:
 
 The premium-feature settings themselves are left alone, as is anything the backend gates server-side.
 
-The patch matches the obfuscated class names of Ascent 5.0.1, so it is only declared compatible with that build and has to be re-verified for newer releases.
+The patch matches the obfuscated class names of Ascent 5.0.2, so it is only declared compatible with that build and has to be re-verified for newer releases.
+
+---
+
+## Vampire Survivors DLC (`com.poncle.vampiresurvivors`)
+
+### What the patch does
+Unlocks every expansion by rewriting a single function in the IL2CPP binary:
+- **Purchase lookup:** `PurchasingController.GetOwnedDlcTypes()` is replaced by a branch into the game's own "all DLC" list (`DlcSorting.SortedDlcTypes`), so the license manager hands every DLC to the content gates.
+- **No store involved:** the original method needs a live Play Billing session and cached receipts, which a re-signed build cannot have, so the whole store code path is skipped instead of faked.
+
+Only the arm64 `libil2cpp.so` is patched; 32-bit devices keep the stock behaviour. The offsets are absolute file offsets in the 1.16.111 binary, so the patch is declared compatible with that build only and has to be re-verified for newer releases.
+
+The patch does not bundle expansion content: if a DLC asset pack is not already on the device, the game still has to fetch it from the store, which may fail on a re-signed build.
 
 ---
 
