@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-31T15:43:15",
-  "description": "## [1.8.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.0...v1.8.1) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **instagram:** stop the Stories tab crashing the tab bar ([7ad5597](https://github.com/FoxxoOwO/foxxo-patches/commit/7ad5597eabf5be508048d48c3ad462882834a651))",
-  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.8.1/patches-1.8.1.mpp",
+  "created_at": "2026-11-18T10:33:07",
+  "description": "## [1.9.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.1...v1.9.0) (2026-11-18)\n\n### ✨ New Features\n\n* **ascent:** unlock premium ([b8a70a0](https://github.com/FoxxoOwO/foxxo-patches/commit/b8a70a00613864e0ea513fa8a081332a9dccca87))",
+  "download_url": "https://github.com/FoxxoOwO/foxxo-patches/releases/download/v1.9.0/patches-1.9.0.mpp",
   "signature_download_url": "",
-  "version": "1.8.1"
+  "version": "1.9.0"
 }

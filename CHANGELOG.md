@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.1...v1.9.0) (2026-11-18)
+
+### ✨ New Features
+
+* **ascent:** unlock premium ([b8a70a0](https://github.com/FoxxoOwO/foxxo-patches/commit/b8a70a00613864e0ea513fa8a081332a9dccca87))
+
 ## [1.8.1](https://github.com/FoxxoOwO/foxxo-patches/compare/v1.8.0...v1.8.1) (2026-10-31)
 
 ### 🐛 Bug Fixes

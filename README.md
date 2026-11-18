@@ -15,7 +15,7 @@ Or add manually in Morphe Manager:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.8.1](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.8.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
+> **[v1.9.0](https://github.com/FoxxoOwO/foxxo-patches/releases/tag/v1.9.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
 <details open>
 <summary>📦 Instagram&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
@@ -30,6 +30,21 @@ Or add manually in Morphe Manager:
 | [Chat only](#chat-only) | Turns Instagram into a chat-only messenger: opens Direct instead of the feed and removes the home feed, Reels, Explore, ads and suggestions, while the Stories tray stays visible. Long-press any bottom tab (or the Direct title) to open the Feurstagram settings. |  |
 | [Clone](#clone) | Renames the package and app label so the patched build installs alongside a stock Instagram instead of replacing it. | • Package name<br>• App name |
 | [Debug bridge](#debug-bridge) | Development only: exposes the Feurstagram settings over ADB broadcasts so they can be driven from a shell instead of the on-screen panel. |  |
+
+</details>
+
+<details open>
+<summary>📦 Ascent&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.0.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock premium](#unlock-premium) | Unlocks Ascent Premium. The subscription status the app reports to its UI is always "premium" (server answer, cached state and first-launch mapping), and the Play license check is disabled so the re-signed build does not shut itself down. |  |
 
 </details>
 
