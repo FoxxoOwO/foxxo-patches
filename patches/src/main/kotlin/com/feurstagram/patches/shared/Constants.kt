@@ -28,7 +28,7 @@ object Constants {
     )
 
     /** Ascent build the premium patch is developed and verified against. */
-    const val ASCENT_VERSION = "5.0.1"
+    const val ASCENT_VERSION = "5.0.2"
 
     /**
      * Ascent obfuscates its classes, so the patch matches the names of ASCENT_VERSION only:
@@ -42,6 +42,22 @@ object Constants {
         appIconColor = 0x1B1B1F,
         targets = listOf(
             AppTarget(version = ASCENT_VERSION),
+        ),
+    )
+
+    /** Vampire Survivors build the DLC patch is developed and verified against. */
+    const val VAMPIRESURVIVORS_VERSION = "1.16.111"
+
+    /**
+     * The DLC patch rewrites absolute offsets in the native `libil2cpp.so`, so it is pinned to
+     * VAMPIRESURVIVORS_VERSION. The game ships as an app bundle, hence APKM.
+     */
+    val COMPATIBILITY_VAMPIRESURVIVORS = Compatibility(
+        name = "Vampire Survivors",
+        packageName = "com.poncle.vampiresurvivors",
+        apkFileType = ApkFileType.APKM,
+        targets = listOf(
+            AppTarget(version = VAMPIRESURVIVORS_VERSION),
         ),
     )
 

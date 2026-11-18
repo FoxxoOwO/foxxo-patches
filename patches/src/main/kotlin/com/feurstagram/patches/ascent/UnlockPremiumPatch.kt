@@ -17,35 +17,37 @@ import com.feurstagram.patches.shared.Constants.COMPATIBILITY_ASCENT
 /*
  * Ascent models the subscription as a `gk4` status object, and every premium gate in the UI is
  * `premiumStatus instanceof ck4` (ck4 = "is premium"). The status is produced in three places
- * that have to agree, otherwise the UI flips back to the free state a moment after launch:
+ * Ascent models the subscription as an `sl4` status object, and every premium gate in the UI is
+ * `premiumStatus instanceof nl4` (nl4 = "is premium"). The status is produced in two places that
+ * have to agree, otherwise the UI flips back to the free state a moment after launch:
  *
- *  - g90.b(Jjc0;)  - the server answer handler. `jc0.a == 0` means "subscribed"; the handler maps
- *                    that to `bk4.a` (premium) or `dk4.a` (free), caches it in `Lbj4;` and pushes
- *                    it into the status StateFlow `g90.i`.
- *  - v00.invokeSuspend - the coroutine lambda that maps the locally known purchase state (`nk2`),
- *                    the "premium features enabled" flag and the focus-session state (`lk4`) into
- *                    the same status. It is used on the very first launch, before the server has
- *                    answered, so the UI would briefly render the free state without it.
+ *  - m90.c(Lrc0;)  - the server answer handler. A subscribed answer is mapped to `ml4.a`
+ *                    (premium) or `ol4.a` (free), then cached and pushed into the status
+ *                    StateFlow `m90.i`.
+ *  - s81.invokeSuspend - the coroutine lambda that maps the locally known purchase state into
+ *                    the same status (`rl4` premium, `ql4` promotion, `pl4` expired, `ol4` free).
+ *                    It runs on the very first launch, before the server has answered, so the UI
+ *                    would briefly render the free state without it.
  *
- * Both are pinned to `bk4.a`, the plain "premium" status (`fk4` is a promotion, `dk4` free,
- * `ek4` expired). The premium-feature settings list is separate state and is left untouched.
+ * Both are pinned to `ml4.a`. The premium-feature settings list is separate state and is left
+ * untouched.
  *
  * Repackaging the APK invalidates the Play license shipped with PairIP
  * (`com.pairip.application.Application` -> `LicenseClient.checkLicense`), which otherwise raises
  * the "not licensed" path and kills the process after 30 seconds, so that check is disabled too.
  */
 
-/** Final status object used by every premium gate: `bk4` implements `ck4`. */
-private const val PREMIUM_STATUS = "Lbk4;"
+/** Final status object used by every premium gate: `ml4` implements `nl4`. */
+private const val PREMIUM_STATUS = "Lml4;"
 
-/** Free status object (`dk4`), the value the server mapping must never produce. */
-private const val FREE_STATUS = "Ldk4;"
+/** Free status object (`ol4`), the value the server mapping must never produce. */
+private const val FREE_STATUS = "Lol4;"
 
 /** Server answer handler of the subscription repository. */
-private const val STATUS_REPOSITORY = "Lg90;"
+private const val STATUS_REPOSITORY = "Lm90;"
 
 /** Coroutine lambda that maps the local purchase state into a status. */
-private const val STATUS_MAPPER = "Lv00;"
+private const val STATUS_MAPPER = "Ls81;"
 
 /** PairIP Play licensing client. */
 private const val LICENSE_CLIENT = "Lcom/pairip/licensecheck/LicenseClient;"
@@ -60,10 +62,10 @@ internal fun BytecodePatchContext.unlockPremium() {
     disablePairIpLicenseCheck()
 }
 
-/** `g90.b`: both branches of the `do4 ? bk4.a : dk4.a` mapping return the premium status. */
+/** `m90.c`: both branches of the "subscribed ? ml4.a : ol4.a" mapping return the premium status. */
 private fun BytecodePatchContext.forceSubscribedServerStatus() {
-    val method = mutableClassDefBy(STATUS_REPOSITORY).methods.singleOrNull { it.name == "b" }
-        ?: throw PatchException("Could not find the subscription status handler ($STATUS_REPOSITORY->b)")
+    val method = mutableClassDefBy(STATUS_REPOSITORY).methods.singleOrNull { it.name == "c" }
+        ?: throw PatchException("Could not find the subscription status handler ($STATUS_REPOSITORY->c)")
 
     val freeStatusIndex = method.instructions.indexOfFirst { instruction ->
         val reference = (instruction as? ReferenceInstruction)?.reference as? FieldReference
@@ -78,7 +80,7 @@ private fun BytecodePatchContext.forceSubscribedServerStatus() {
 }
 
 /**
- * `v00.invokeSuspend`: the mapper is a coroutine state machine whose first branch (`a == 0`) is
+ * `s81.invokeSuspend`: the mapper is a coroutine state machine whose first branch (`a == 0`) is
  * the subscription mapping. Returning the premium status right after the dispatch field is read
  * skips that mapping (and every suspension point inside it) without touching the second use of
  * the same lambda shape.
