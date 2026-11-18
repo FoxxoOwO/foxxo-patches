@@ -27,6 +27,24 @@ object Constants {
         ),
     )
 
+    /** Ascent build the premium patch is developed and verified against. */
+    const val ASCENT_VERSION = "5.0.1"
+
+    /**
+     * Ascent obfuscates its classes, so the patch matches the names of ASCENT_VERSION only:
+     * a new app release renames them and the patch has to be re-verified before it is extended
+     * to further targets.
+     */
+    val COMPATIBILITY_ASCENT = Compatibility(
+        name = "Ascent",
+        packageName = "com.ascent",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0x1B1B1F,
+        targets = listOf(
+            AppTarget(version = ASCENT_VERSION),
+        ),
+    )
+
     /**
      * Version-agnostic companion for the meta patches (Clone, Debug bridge): they
      * only rename the package / expose the settings store, so they must stay

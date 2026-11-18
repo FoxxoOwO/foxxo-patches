@@ -51,5 +51,19 @@ Transforms Instagram into a distraction-free, dedicated messenger (Messenger for
 
 ---
 
+## ⏳ Ascent Premium (`com.ascent`)
+
+### What the patch does
+Makes Ascent treat the account as having an active Premium subscription:
+- **Server answer:** every response of the subscription endpoint is mapped to the premium status object, so the cached state and the status flow never drop back to "free" after a refresh.
+- **First launch:** the status mapper returns premium immediately instead of waiting for the server, so the UI does not briefly render the free state.
+- **PairIP license check:** disabled, because a re-signed build fails the Play licensing check and the app would otherwise kill its own process after 30 seconds.
+
+The premium-feature settings themselves are left alone, as is anything the backend gates server-side.
+
+⚠️ The patch matches the obfuscated class names of Ascent 5.0.1, so it is only declared compatible with that build and has to be re-verified for newer releases.
+
+---
+
 ## 📜 License
 [GPLv3](LICENSE)
